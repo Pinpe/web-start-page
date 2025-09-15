@@ -18,6 +18,11 @@
 </script>
 
 <style scoped>
+  @media screen and (max-width: 1420px) {
+    #bing_card{
+      float: none !important;
+    }
+  }
   #bing_card{
     width: 300px;
     text-align: center;

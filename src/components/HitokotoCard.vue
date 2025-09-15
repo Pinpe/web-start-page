@@ -22,6 +22,11 @@
 </script>
 
 <style scoped>
+  @media screen and (max-width: 1420px) {
+    #hitokoto_card{
+      float: none !important;
+    }
+  }
   #hitokoto_card{
     width: 300px;
     text-align: center;

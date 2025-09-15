@@ -1,6 +1,6 @@
 <template>
   <div id="main_card" class="tilts">
-    <LinkBtu name="博客" link="https://pinpe.top"></LinkBtu>
+    <LinkBtu name="Pinpe的云端" link="https://pinpe.top"></LinkBtu>
     <LinkBtu name="哔哩哔哩" link="https://www.bilibili.com/"></LinkBtu>
     <LinkBtu name="知乎" link="https://www.zhihu.com/"></LinkBtu>
     <LinkBtu name="DeepSeek" link="https://chat.deepseek.com/"></LinkBtu>
@@ -16,6 +16,11 @@
 </script>
 
 <style scoped>
+  @media screen and (max-width: 1420px) {
+    #main_card{
+      float: none !important;
+    }
+  }
   #main_card{
     width: 300px;
     height: 310px;

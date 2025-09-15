@@ -21,6 +21,13 @@ onMounted(() => {
 </script>
 
 <style>
+  @media screen and (max-width: 1420px) {
+    body{
+      padding-left: 1% !important;
+      padding-right: 1% !important;
+      padding-top: 1% !important;
+    }
+  }
   * {
     cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' fill='black' opacity='.45'/></svg>") 4 4, auto !important;
   }

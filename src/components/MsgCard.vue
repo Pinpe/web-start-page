@@ -39,6 +39,11 @@
 </script>
 
 <style scoped>
+  @media screen and (max-width: 1420px) {
+      #msg_card{
+        float: none !important;
+      }
+    }
   #msg_card{
     width: 300px;
     height: 100px;
