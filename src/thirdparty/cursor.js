@@ -36,9 +36,12 @@ class Cursor {
         }
 
         var el = document.getElementsByTagName('*');
-        for (let i = 0; i < el.length; i++)
-            if (getStyle(el[i], "cursor") == "pointer")
+        for (let i = 0; i < el.length; i++) {
+            // 修改这里：添加对按钮元素的检测
+            if (getStyle(el[i], "cursor") == "pointer" || el[i].tagName.toLowerCase() === "button") {
                 this.pt.push(el[i].outerHTML);
+            }
+        }
 
         document.body.appendChild((this.scr = document.createElement("style")));
         this.scr.innerHTML = `* {cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='8px' height='8px'><circle cx='4' cy='4' r='4' opacity='.5'/></svg>") 4 4, auto}`;
@@ -57,8 +60,18 @@ class Cursor {
     }
 
     init() {
-        document.onmouseover  = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");
-        document.onmouseout   = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");
+        document.onmouseover  = e => {
+            // 修改这里：添加对按钮元素的检测
+            if (this.pt.includes(e.target.outerHTML) || e.target.tagName.toLowerCase() === "button" || e.target.tagName.toLowerCase() === "input") {
+                this.cursor.classList.add("hover");
+            }
+        };
+        document.onmouseout   = e => {
+            // 修改这里：添加对按钮元素的检测
+            if (this.pt.includes(e.target.outerHTML) || e.target.tagName.toLowerCase() === "button" || e.target.tagName.toLowerCase() === "input") {
+                this.cursor.classList.remove("hover");
+            }
+        };
         document.onmousemove  = e => {(this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = {x: e.clientX - 8, y: e.clientY - 8}; this.cursor.classList.remove("hidden");};
         document.onmouseenter = () => this.cursor.classList.remove("hidden");
         document.onmouseleave = () => this.cursor.classList.add("hidden");

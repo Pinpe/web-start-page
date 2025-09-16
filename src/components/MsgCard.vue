@@ -10,7 +10,7 @@
   import { ref } from 'vue';
   import VanillaTilt from 'vanilla-tilt';
 
-  VanillaTilt.init(document.querySelectorAll(".tilts"));
+  VanillaTilt.init(document.querySelectorAll(".tilts"), {reverse:true});
 
   // 定义响应式变量
   const time = ref('');

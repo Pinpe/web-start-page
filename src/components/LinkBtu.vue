@@ -1,11 +1,11 @@
 <template>
-  <button @click="href(props.link)">{{ props.name }}</button>
+  <button @click="href(props.link)" :style="{ '--main-color': props.mainColor }">{{ props.name }}</button>
 </template>
 
 <script setup>
   import { defineProps } from 'vue';
 
-  const props = defineProps(['link', 'name'])
+  const props = defineProps(['mainColor' ,'link', 'name'])
 
   function href(link){
     location.href = link;
@@ -17,15 +17,15 @@
     border: none;
     font-size: 15px;
     padding: 10px 10px 10px 10px;
-    background-color: #dcf4f4;
+    background-color: v-bind("mainColor + '22'");
     border-radius: 6px;
     margin-top: 5px;
-    color: #00b8b9;
+    color: var(--main-color);
     transition:ease-in-out .2s;
     width:100%;
   }
   button:hover{
-    background-color: #00b8b9;
+    background-color: var(--main-color);
     color: #fff;
   }
 </style>

@@ -9,7 +9,7 @@
   import VanillaTilt from 'vanilla-tilt';
 
   onMounted(() => {
-    VanillaTilt.init(document.querySelectorAll("#hitokoto_card.tilts"));
+    VanillaTilt.init(document.querySelectorAll("#hitokoto_card.tilts"), {reverse:true});
     fetch('https://v1.hitokoto.cn')
       .then(response => response.json())
       .then(data => {

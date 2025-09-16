@@ -1,10 +1,16 @@
 <template>
-  <span id="title1">欢迎</span>
-  <span id="title2">回到互联网，您想从哪里开始？</span>
+  <div :style="{ '--main-color': props.mainColor }">
+    <span id="title1">欢迎</span>
+    <span id="title2">回到互联网，您想从哪里开始？</span>
+  </div>
 </template>
 
 <script setup>
-  
+  import { defineProps } from 'vue';
+
+  const props = defineProps(['mainColor'])
+
+
 </script>
 
 <style scoped>
@@ -17,11 +23,11 @@
     }
   }
   #title1{
-    color: #00b8b9;
+    color: var(--main-color);
     font-size: 50px;
   }
   #title2{
-    color: #00b9b950;
+    color: v-bind("mainColor + '50'");
     font-size: 35px;
   }
 </style>

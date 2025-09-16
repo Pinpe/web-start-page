@@ -1,15 +1,18 @@
 <template>
-    <div id="bing_card" class="tilts">
+    <div id="bing_card" class="tilts" :style="{ '--main-color': props.mainColor }">
       <input type="text" v-model="key_con" id="key">
       <button id="scr" @click="scr(key_con)">必应一下</button>
     </div>
 </template>
 
 <script setup>
-  import { onMounted } from 'vue';
+  import { onMounted, defineProps } from 'vue';
   import VanillaTilt from 'vanilla-tilt';
+
+  const props = defineProps(['mainColor'])
+
   onMounted(() => {
-    VanillaTilt.init(document.querySelectorAll(".tilts"));
+    VanillaTilt.init(document.querySelectorAll(".tilts"), {reverse:true});
   })
 
   function scr(key_con){
@@ -32,14 +35,14 @@
     border: none;
     font-size: 15px;
     padding: 5px 10px 5px 10px;
-    background-color: #dcf4f4;
+    background-color: v-bind("mainColor + '22'");
     border-radius: 6px;
     margin-left: 5px;
-    color: #00b8b9;
+    color: var(--main-color);
     transition:ease-in-out .2s;
   }
   #scr:hover{
-    background-color: #00b8b9;
+    background-color: var(--main-color);
     color: #fff;
   }
   #key{
@@ -47,9 +50,9 @@
     font-size: 15px;
     padding: 7px 10px 7px 10px;
     border-radius: 6px;
-    background-color: #dcf4f4;
-    outline-color: #00b8b9;
-    color: #00b8b9;
+    background-color: v-bind("mainColor + '22'");
+    outline-color: var(--main-color);
+    color: var(--main-color);
     width: 195px;
   }
 </style>
